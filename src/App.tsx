@@ -1,30 +1,22 @@
 // App.js
 import React, { useState } from "react";
+import ImageDisplay from "./Components/ImageDisplay";
 import ImageUpload from "./Components/ImageUpload";
 
 function App() {
-  const [submittedData, setSubmittedData] = useState(null);
+  const [submittedDataList, setSubmittedDataList] = useState([]);
 
   const handleFormSubmit = (data) => {
-    setSubmittedData(data);
+    setSubmittedDataList((prevList) => [data, ...prevList].slice(0, 3)); // setSubmittedData([...submittedData, data);
   };
 
   return (
     <div className="App">
       <h1>Upload Picture Form</h1>
       <ImageUpload onSubmit={handleFormSubmit} />
-      {submittedData && (
-        <div>
-          <h2>Submitted Information:</h2>
-          <p>Name: {submittedData.name}</p>
-          <p>Description: {submittedData.description}</p>
-          <img
-            src={submittedData.imageUrl}
-            alt="Uploaded"
-            style={{ maxWidth: "300px", marginTop: "20px" }}
-          />
-        </div>
-      )}
+      {submittedDataList.map((data, index) => (
+        <ImageDisplay key={index} data={data} />
+      ))}
     </div>
   );
 }
