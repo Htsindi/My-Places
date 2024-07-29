@@ -4,10 +4,10 @@ import ImageDisplay from "./Components/ImageDisplay";
 import ImageUpload from "./Components/ImageUpload";
 
 function App() {
-  const [submittedDataList, setSubmittedDataList] = useState(null);
+  const [submittedDataList, setSubmittedDataList] = useState([]);
 
   const handleFormSubmit = (data) => {
-    setSubmittedDataList((prevList) => [...prevList, data].slice(0, 3)); // setSubmittedData([...submittedData, data);
+    setSubmittedDataList((prevList) => [data, ...prevList].slice(0, 3)); // setSubmittedData([...submittedData, data);
   };
 
   return (

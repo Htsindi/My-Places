@@ -1,6 +1,6 @@
 import React from "react";
 
-function ImageDisplay({ data }) {
+const ImageDisplay = function ({ data }) {
   return (
     <div>
       <h2>My Favourite Places:</h2>
@@ -19,6 +19,6 @@ function ImageDisplay({ data }) {
       )}
     </div>
   );
-}
+};
 
 export default ImageDisplay;
